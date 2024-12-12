@@ -1,0 +1,20 @@
+# cache
+.ruff_cache
+
+# env
+.venv
+venv
+vendor
+virtualenv
+
+# logs
+*.log
+
+# config
+.env
+
+# Macos
+.DS_Store
+
+# makefile need
+!Makefile
