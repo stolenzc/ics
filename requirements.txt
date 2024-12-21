@@ -4,7 +4,6 @@ pydantic==2.10.2
 pydantic_settings==2.6.1
 sqlalchemy==2.0.36
 uvicorn==0.32.1
-pytz==2024.2
 alembic==1.14.0
 lunarcalendar==0.0.9  # 农历
 pymysql==1.1.1

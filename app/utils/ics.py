@@ -1,7 +1,6 @@
-from datetime import datetime
+from datetime import date
 from typing import List
 
-import pytz
 from icalendar import Calendar, Event
 
 from app.models.birthday import Birthday
@@ -19,12 +18,11 @@ def generate_ics_content(birthdays: List[Birthday]) -> str:
             if birthday.is_lunar:
                 celebrate_date = lunar_to_solar(year, born_date.month, born_date.day)
             else:
-                celebrate_date = datetime(year, born_date.month, born_date.day)
+                celebrate_date = date(year, born_date.month, born_date.day)
 
             event.add('summary', f"{birthday.name}的第{year - born_date.year}岁生日")
-            event.add('dtstart', celebrate_date.replace(tzinfo=pytz.UTC))
-            event.add('dtend', celebrate_date.replace(tzinfo=pytz.UTC))
-            # event.add('rrule', {'freq': 'yearly'})  # 每年重复
+            event.add('dtstart', celebrate_date)
+            event.add('dtend', celebrate_date)
 
             calendar.add_component(event)
 

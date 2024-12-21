@@ -9,7 +9,7 @@ from app.utils.ics import generate_ics_content
 router = APIRouter()
 
 
-@router.get("/cal.ics", response_class=PlainTextResponse)
+@router.get("", response_class=PlainTextResponse)
 async def get_birthday_ics(db: Session = Depends(get_db)):
     """
     获取所有用户的生日信息，并返回一个符合 iCalendar 格式的 .ics 文件。
