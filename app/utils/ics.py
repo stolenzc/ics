@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from typing import List
 
 from icalendar import Calendar, Event
@@ -21,8 +21,8 @@ def generate_ics_content(birthdays: List[Birthday]) -> str:
                 celebrate_date = date(year, born_date.month, born_date.day)
 
             event.add('summary', f"{birthday.name}的第{year - born_date.year}岁生日")
-            event.add('dtstart', celebrate_date)
-            event.add('dtend', celebrate_date)
+            event.add('dtstart', datetime.combine(celebrate_date, datetime.min.time()))
+            event.add('dtend', datetime.combine(celebrate_date, datetime.max.time()))
 
             calendar.add_component(event)
 
